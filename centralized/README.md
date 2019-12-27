@@ -1,22 +1,23 @@
-## Centralized blackboard
+## Distributed blackboard with centralized communication
 
 ### Description
- - All board show messages in the same order
+We implemented a ring-based leader election where all data is sent to a central leader which distributes it to the network. The leader is be able to handle multiple posts from different nodes.
+
+ - All boards show messages in the same order
  - Each post is sent to the leader which distributes it to the network
    - The leader handles multiple posts from different nodes
  - Implemented leader election
    - Ring-based election algorithm
-     - Every node should send only to their next neighbor
-     - A locally generated random number as a criterion for selecting the leader (e.g. highest wins)
+     - Every node sends only to their next neighbor
+     - Highest locally generated random number wins as a criterion for selecting the leader
      - The protocol starts running as soon as the nodes are up
      - After the election:
-       - The leader is established and everyone agrees on it
+       - A leader is established and everyone agrees on it
        - Nodes send new entries directly to the leader (no ring)
        - The leader serves as a centralized sequencer
          - Decides the correct, global order of all messages and everybody else follows that order
- - Handle dynamic networks:
+ - Handles dynamic networks:
    - The leader fails while the program is running
-     - Elected leader fails after election
-       - Failed elected leader is reintroduced to the network
+     - Failed elected leader is reintroduced to the network
    - A node during the election cannot reach its next neighbor
-   - Concurrently delete/modify entries in the blackboard
+   - Concurrently deleted/modified entries in the blackboard
