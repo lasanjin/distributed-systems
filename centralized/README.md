@@ -21,3 +21,4 @@ We implemented a ring-based leader election where all data is sent to a central 
      - Failed elected leader is reintroduced to the network
    - A node during the election cannot reach its next neighbor
    - Concurrently deleted/modified entries in the blackboard
+   - No data is lost
