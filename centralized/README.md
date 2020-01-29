@@ -3,12 +3,14 @@
 ### Description
 We implemented a ring-based leader election where all data is sent to a central leader which distributes it to the network. The leader is be able to handle multiple posts from different nodes.
 
+### Solution
  - All boards show messages in the same order
  - Each post is sent to the leader which distributes it to the network
    - The leader handles multiple posts from different nodes
  - Implemented leader election
    - Ring-based election algorithm
      - Every node sends only to their next neighbor
+       - Upon receiving candidates: do not send messages unless `self.ID` >= `candidates.maxID`
      - Highest locally generated random number wins as a criterion for selecting the leader
      - The protocol starts running as soon as the nodes are up
      - After the election:
@@ -16,7 +18,7 @@ We implemented a ring-based leader election where all data is sent to a central 
        - Nodes send new entries directly to the leader (no ring)
        - The leader serves as a centralized sequencer
          - Decides the correct, global order of all messages and everybody else follows that order
- - Handles dynamic networks:
+ - Handeling dynamic networks
    - The leader fails while the program is running
      - Failed elected leader is reintroduced to the network
    - A node during the election cannot reach its next neighbor

@@ -1,8 +1,9 @@
-## Eventyally consistent blackboard
+## Eventually consistent blackboard
 
 ### Description
-We implemented a solution with balance between strictness of consistency and efficiency/scalability. 
+We implemented a solution with balance between strictness of consistency (centralized leader) and efficiency/scalability.
 
+### Solution
  - Messages appear temporarily in different order
  - All blackboards eventually converge to the same value
  - Boards are distributed:
