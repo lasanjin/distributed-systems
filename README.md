@@ -5,7 +5,7 @@ Lab assignments from Distributed Systems course at Chalmers.
 
 We developed and evaluated a distributed blackboard over a network on Mininet with local virtual machines. We improved the blackboard to make it more consistent, fault-torelant, efficient and reliable by implementing different algorithms. All work was done in the `server.py` files.
 
-### Assignments (in chronological order)
+### Assignments (In chronological order)
  - [distributed](distributed/README.md)
    - Simple distributed solution
      - No guaranteed order, consistency or fault-tolerance
